@@ -1,0 +1,19 @@
+[
+  "tests/test_acoes.py::test_carregar_dados_fundamentais",
+  "tests/test_acoes.py::test_carregar_dados_fundamentais_invalido",
+  "tests/test_acoes.py::test_formatar_moeda",
+  "tests/test_acoes.py::test_obter_detalhes",
+  "tests/test_acoes.py::test_obter_oscilacoes",
+  "tests/test_acoes.py::test_obter_oscilacoes_falha",
+  "tests/test_acoes.py::test_obter_oscilacoes_sucesso",
+  "tests/test_acoes.py::test_obter_proventos",
+  "tests/test_acoes.py::test_obter_proventos_falha",
+  "tests/test_acoes.py::test_obter_proventos_sucesso",
+  "tests/test_acoes.py::test_remover_formatacao",
+  "tests/test_app.py::test_main",
+  "tests/test_dashboard.py::test_exibir_dashboard",
+  "tests/test_dashboard.py::test_formatar_numero",
+  "tests/test_data_handler.py::test_ajustar_tipos_dataframe",
+  "tests/test_data_hendler.py::test_ajustar_tipos_dataframe",
+  "tests/test_fundamentalvision.py::test_main"
+]
