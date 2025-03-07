@@ -130,7 +130,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 For questions or suggestions, contact:
 
-**Author:** Joel Ferreira  
+**Author:** Joel Ferreira Heanna dos Reis
 **Email:** heannareis@gmail.com
 
 ---
