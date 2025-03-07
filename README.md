@@ -47,7 +47,7 @@ fundamentalvision/
 │   └── acoes.py              # Obter dados de Ações
 │   └── dashboard.py          # Renderizar os dados com Streamlit
 │   └── data_handler.py       # Configuração do Dataframe
-│   └── app.py  # Código principal
+│   └── app.py                # Código principal
 │
 ├── tests/                    # Diretório de testes
 │   ├── __init__.py
