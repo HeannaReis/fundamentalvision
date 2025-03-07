@@ -2,9 +2,9 @@ import locale
 import pandas as pd
 import streamlit as st
 import fundamentus
-from acoes import Acao
+from fundamentalvision.acoes import Acao
 import plotly.express as px
-from dashboard import Dashboard
+from fundamentalvision.dashboard import Dashboard
 
 def main():
     # Configura localidade

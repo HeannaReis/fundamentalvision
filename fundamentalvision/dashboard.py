@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-from acoes import Acao
-from data_handler import DataFrameHandler
+from fundamentalvision.acoes import Acao
+from fundamentalvision.data_handler import DataFrameHandler
 import plotly.express as px
 
 class Dashboard:
@@ -71,6 +71,8 @@ class Dashboard:
             st.subheader("💰 Dividendos")
             if not acao.proventos.empty:
                 st.write(proventos_df)
+            else:
+                st.warning("Nenhum dividendo encontrado para essa ação.")
         with col_oscilacoes:
             st.subheader("📉 Oscilações")
             if acao.oscilacoes is not None and not acao.oscilacoes.empty:

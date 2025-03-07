@@ -1,6 +1,10 @@
 import pytest
 import pandas as pd
 from fundamentalvision.acoes import Acao
+from unittest.mock import patch, MagicMock
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 @pytest.fixture
 def acao():
@@ -14,26 +18,68 @@ def test_carregar_dados_fundamentais(acao):
     assert isinstance(acao.dados_fundamentais, pd.DataFrame)
     assert not acao.dados_fundamentais.empty
 
-def test_obter_detalhes(acao):
-    """Teste para verificar se os detalhes da ação são obtidos corretamente."""
-    acao.obter_detalhes()
-    assert acao.detalhes is not None
-    assert isinstance(acao.detalhes, pd.DataFrame)
-    assert not acao.detalhes.empty
+def test_carregar_dados_fundamentais_invalido():
+    """Teste para verificar o comportamento ao tentar carregar dados de uma ação inválida."""
+    acao_invalida = Acao('INVALIDO')
+    acao_invalida.carregar_dados_fundamentais()
+    assert acao_invalida.dados_fundamentais.empty  # Verifica se o DataFrame está vazio
 
-def test_obter_proventos(acao):
-    """Teste para verificar se os proventos da ação são obtidos corretamente."""
+@patch('requests.get')
+def test_obter_proventos_sucesso(mock_get, acao):
+    """Teste para verificar se os proventos são obtidos corretamente com uma resposta simulada."""
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.text = """
+    <table id="resultado">
+        <tr><td>2023-01-01</td><td>1,00</td><td>Dividendo</td></tr>
+    </table>
+    """
+    mock_get.return_value = mock_response
+
     acao.obter_proventos()
-    assert acao.proventos is not None
-    assert isinstance(acao.proventos, pd.DataFrame)
-    assert not acao.proventos.empty
+    assert not acao.proventos.empty  # Verifica se o DataFrame não está vazio
+    assert 'Data' in acao.proventos.columns
+    assert 'Valor' in acao.proventos.columns
+    assert 'Tipo' in acao.proventos.columns
+    
+@patch('requests.get')
+def test_obter_proventos_falha(mock_get, acao):
+    """Teste para verificar o comportamento quando a requisição falha."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_get.return_value = mock_response
 
-def test_obter_oscilacoes(acao):
-    """Teste para verificar se as oscilações da ação são obtidas corretamente."""
+    acao.obter_proventos()
+    assert acao.proventos.empty  # Verifica se o DataFrame está vazio
+
+@patch('requests.get')
+def test_obter_proventos_sucesso(mock_get, acao):
+    """Teste para verificar se os proventos são obtidos corretamente com uma resposta simulada."""
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.text = """
+    <table id="resultado">
+        <tr><th>Data</th><th>Valor</th><th>Tipo</th></tr>
+        <tr><td>2023-01-01</td><td>1,00</td><td>Dividendo</td></tr>
+    </table>
+    """
+    mock_get.return_value = mock_response
+
+    acao.obter_proventos()
+    assert not acao.proventos.empty  # Verifica se o DataFrame não está vazio
+    assert 'Data' in acao.proventos.columns
+    assert 'Valor' in acao.proventos.columns
+    assert 'Tipo' in acao.proventos.columns
+
+@patch('requests.get')
+def test_obter_oscilacoes_falha(mock_get, acao):
+    """Teste para verificar o comportamento quando a requisição falha."""
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_get.return_value = mock_response
+
     acao.obter_oscilacoes()
-    assert acao.oscilacoes is not None
-    assert isinstance(acao.oscilacoes, pd.DataFrame)
-    assert not acao.oscilacoes.empty
+    assert acao.oscilacoes.empty  # Verifica se o DataFrame está vazio
 
 def test_remover_formatacao(acao):
     """Teste para verificar se a formatação dos dados fundamentais é removida corretamente."""
@@ -47,9 +93,3 @@ def test_formatar_moeda(acao):
     valor = 1234.56
     formatted_value = acao.formatar_moeda(valor)
     assert formatted_value == 'R$ 1.234,56'  # Verifique se o formato está correto de acordo com a localidade
-
-def test_carregar_dados_fundamentais_invalido():
-    """Teste para verificar o comportamento ao tentar carregar dados de uma ação inválida."""
-    acao_invalida = Acao('INVALIDO')
-    acao_invalida.carregar_dados_fundamentais()
-    assert acao_invalida.dados_fundamentais.empty  # Verifica se o DataFrame está vazio

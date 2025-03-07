@@ -36,23 +36,26 @@ class Acao:
         response = requests.get(url, headers=headers)
 
         if response.status_code != 200:
-            return pd.DataFrame()
+            self.proventos = pd.DataFrame(columns=['Data', 'Valor', 'Tipo'])  # Inicializa como DataFrame vazio
+            return self.proventos
 
         soup = BeautifulSoup(response.text, 'html.parser')
         tabela = soup.find('table', {'id': 'resultado'})
 
         if not tabela:
-            return pd.DataFrame()
+            self.proventos = pd.DataFrame(columns=['Data', 'Valor', 'Tipo'])  # Inicializa como DataFrame vazio
+            return self.proventos
 
         dados = []
-        for linha in tabela.find_all('tr')[1:]:
+        for linha in tabela.find_all('tr')[1:]:  # Ignora o cabeçalho da tabela
             colunas = linha.find_all('td')
-            try:
-                valor = float(colunas[1].text.strip().replace(',', '.'))
-            except ValueError:
-                valor = None  # Se der erro, coloca None para evitar crash
+            if len(colunas) >= 3:  # Verifica se há colunas suficientes
+                try:
+                    valor = float(colunas[1].text.strip().replace(',', '.'))
+                except ValueError:
+                    valor = None  # Se der erro, coloca None para evitar crash
 
-            dados.append([colunas[0].text.strip(), valor, colunas[2].text.strip()])
+                dados.append([colunas[0].text.strip(), valor, colunas[2].text.strip()])
         
         self.proventos = pd.DataFrame(dados, columns=['Data', 'Valor', 'Tipo'])
         return self.proventos
@@ -63,13 +66,15 @@ class Acao:
         response = requests.get(url, headers=headers)
 
         if response.status_code != 200:
-            return pd.DataFrame()
+            self.oscilacoes = pd.DataFrame(columns=['Período', 'Oscilação'])  # Inicializa como DataFrame vazio
+            return self.oscilacoes
 
         soup = BeautifulSoup(response.text, 'html.parser')
         conteudo_div = soup.find('div', class_='conteudo clearfix')
 
         if conteudo_div is None:
-            return pd.DataFrame()
+            self.oscilacoes = pd.DataFrame(columns=['Período', 'Oscilação'])  # Inicializa como DataFrame vazio
+            return self.oscilacoes
 
         oscilacoes_data = []
         oscilacoes_section = conteudo_div.find('td', class_='nivel1', colspan='2')
