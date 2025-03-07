@@ -47,11 +47,14 @@ fundamentalvision/
 │   └── acoes.py              # Obter dados de Ações
 │   └── dashboard.py          # Renderizar os dados com Streamlit
 │   └── data_handler.py       # Configuração do Dataframe
-│   └── fundamentalvision.py  # Código principal
+│   └── app.py  # Código principal
 │
 ├── tests/                    # Diretório de testes
 │   ├── __init__.py
 │   └── test_acao.py          # Testes para o módulo Acao
+│   └── test_dashboard.py     # Testes para o módulo Dashboard
+│   └── test_data_handler.py  # Testes para o DataHandler 
+│   └── test_app.py           # Testes para o App
 │
 ├── LICENCE                   # Licenca do Projeto
 ├── README.md                 # Documentação do projeto
@@ -144,4 +147,3 @@ Key features include:
 - **Automated testing** with pytest
 
 The project is open-source and welcomes contributions from the community.
-
