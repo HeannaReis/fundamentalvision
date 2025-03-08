@@ -1,9 +1,0 @@
-pandas
-requests
-beautifulsoup4
-streamlit
-plotly
-fundamentus
-
-[dev]
-pytest
