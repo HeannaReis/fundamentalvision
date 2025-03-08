@@ -16,12 +16,28 @@ Welcome to the complete guide for using the FundamentalVision application, a too
 
 ## Installation
 
-To install FundamentalVision, use pip:
+From PyPI
+
+To install FundamentalVision directly from PyPI, use the following command: 
 
 ```bash
 pip install fundamentalvision
 ```
+## From Source
 
+If you prefer to clone the repository and install the dependencies manually, follow these steps:
+
+1 - Clone the repository:
+
+```bash
+git clone https://github.com/your-username/fundamentalvision.git
+cd fundamentalvision
+```
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 ### Dependencies
 
 The package requires the following libraries:
@@ -75,25 +91,21 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 ## Using the Application
 
-To use FundamentalVision, follow the example below:
+Running the Application
+
+After installing FundamentalVision, you can run the application by creating a simple app.py file with the following content:
 
 ```python
-import locale
-import pandas as pd
-import streamlit as st
-from fundamentalvision.acoes import Acao
-from fundamentalvision.dashboard import Dashboard
-import fundamentus
+## app.py
+from fundamentalvision.app import main
 
-# Set locale
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+if __name__ == "__main__":
+    main()
+```
+Then, execute the application using Streamlit:
 
-# Retrieve stock data
-actions = fundamentus.get_resultado()
-
-# Create and display the dashboard
-dashboard = Dashboard(actions)
-dashboard.exibir_dashboard()
+```bash
+streamlit run app.py
 ```
 
 ## Features
@@ -117,14 +129,23 @@ pytest
 Contributions are welcome! Feel free to open issues or pull requests. To contribute, follow these steps:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature-name`).
-3. Make your changes and commit (`git commit -m 'Add new feature'`).
-4. Push to the remote repository (`git push origin feature/your-feature-name`).
+2. Create a new branch
+```bash
+git checkout -b feature/your-feature-name
+```
+3. Make your changes and commit
+```bash
+git commit -m 'Add new feature'
+```
+4. Push to the remote repository
+```bash
+git push origin feature/your-feature-name
+```
 5. Open a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [MIT License](https://github.com/HeannaReis/fundamentalvision/blob/main/LICENSE)LICENSE file for more details.
 
 ## Contact
 
