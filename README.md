@@ -14,13 +14,6 @@ Welcome to the complete guide for using the FundamentalVision application, a too
 8. [License](#license)
 9. [Contact](#contact)
 
-## Installation
-
-To install FundamentalVision, use pip:
-
-```bash
-pip install fundamentalvision
-```
 
 ### Dependencies
 
@@ -61,16 +54,12 @@ fundamentalvision/
 ├── setup.py                  # Script de configuração para distribuição
 └── requirements.txt          # Dependências do projeto
 ```
+## Installation
 
-## Initial Configuration
+To install FundamentalVision, use pip:
 
-Before running the application, you may need to configure the locale to ensure data is displayed correctly:
-
-```python
-import locale
-
-# Set locale
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+```bash
+pip install fundamentalvision
 ```
 
 ## Using the Application
@@ -78,22 +67,16 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 To use FundamentalVision, follow the example below:
 
 ```python
-import locale
-import pandas as pd
-import streamlit as st
-from fundamentalvision.acoes import Acao
-from fundamentalvision.dashboard import Dashboard
-import fundamentus
+## app.py
+from fundamentalvision.app import main
 
-# Set locale
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+if __name__ == "__main__":
+    main()
+```
+## Executing to terminal
 
-# Retrieve stock data
-actions = fundamentus.get_resultado()
-
-# Create and display the dashboard
-dashboard = Dashboard(actions)
-dashboard.exibir_dashboard()
+```bash
+streamlit run app.py
 ```
 
 ## Features

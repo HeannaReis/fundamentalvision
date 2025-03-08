@@ -19,7 +19,7 @@ setup(
         'fundamentus',
     ],
     extras_require={
-        'dev': ['pytest'],
+        'pytest'
     },
     classifiers=[
         'Programming Language :: Python :: 3',
