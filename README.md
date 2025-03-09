@@ -108,6 +108,41 @@ Then, execute the application using Streamlit:
 streamlit run app.py
 ```
 
+# Screenshots of FundamentalVision Application
+
+Here are some screenshots of the FundamentalVision application in action:
+
+---
+
+### Dashboard Interface
+![Dashboard 1](assets/dash_1.png)
+*Figure 1: Example of the dashboard interface.*
+
+---
+
+### Interactive Charts and Tables
+![Dashboard 2](assets/dash_2.png)
+*Figure 2: Interactive charts and tables.*
+
+---
+
+### Stock Price Fluctuation Analysis
+![Dashboard 3](assets/dash_3.png)
+*Figure 3: Stock dividend and price fluctuation analysis.*
+
+---
+
+### Features of All Brazilian B3 Stocks
+![Dashboard 4](assets/dash_4.png)
+*Figure 4: Tables with all stocks listed on B3.*
+
+---
+
+### Test Results
+![Test Results](assets/test_1.png)
+*Figure 5: Example of automated test results.*
+
+---
 ## Features
 
 - **Load Fundamental Data**: Loads financial information for a specific stock.
@@ -115,6 +150,20 @@ streamlit run app.py
 - **Get Details**: Obtains additional details about the stock.
 - **Track Price Fluctuations**: Collects data on stock price fluctuations.
 - **Interactive Visualization**: Displays interactive charts and tables using Streamlit and Plotly.
+- **Download CSV**: Allows users to download data tables as CSV files for further analysis.
+- **Search Functionality**: Users can search for specific information directly within the tables in the user interface.
+- **Maximize Tables and Graphs**: Users can maximize tables and graphs for better visibility and analysis.
+- **Summary of Fundamental Data**: Provides a concise summary of key fundamental data for quick reference.
+- **Detailed Fundamental Data**: Offers detailed views of fundamental data for in-depth analysis.
+- **Dividend Graph**: Displays a graphical representation of dividends over time.
+- **Dividend Table**: Presents a table of dividends, showing historical dividend payments.
+- **Oscillation Table**: Displays a table of stock price fluctuations over the last years, including:
+  - Day
+  - Month
+  - 30 days
+  - 12 months
+  - Yearly breakdown for the last several years (e.g., 2025, 2024, 2023, 2022, 2021, 2020).
+- **General Table of All Stocks**: Provides a comprehensive table listing all available stocks for analysis.
 
 ## Testing
 
