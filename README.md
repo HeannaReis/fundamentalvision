@@ -30,7 +30,7 @@ If you prefer to clone the repository and install the dependencies manually, fol
 1 - Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/fundamentalvision.git
+git clone https://github.com/HeannaReis/fundamentalvision.git
 cd fundamentalvision
 ```
 Install the required dependencies:

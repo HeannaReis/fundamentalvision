@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='fundamentalvision',
-    version='0.1.0',
+    version='0.1.1',
     author='Joel Ferreira Heanna dos Reis',
     author_email='heannareis@gmail.com',
     description='A package for fundamental analysis of stocks on Brazil B3 Exchange.',
